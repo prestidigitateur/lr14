@@ -16,7 +16,7 @@
 
 [Как сделать точку доступа Wi-Fi](https://github.com/prestidigitateur/lr14/blob/master/standart/accessPoint.ino)
 
-[Как сделать подключится к Wi-Fi](https://github.com/prestidigitateur/lr14/blob/master/standart/station.ino)
+[Как подключится к Wi-Fi](https://github.com/prestidigitateur/lr14/blob/master/standart/station.ino)
 
 [Шаблон сайта (1 вариант)](https://github.com/prestidigitateur/lr14/blob/master/standart/Site1.ino)
 
@@ -31,17 +31,13 @@
 > **colors.html, leds.html, sensors.html** - примеры html страниц
 
 ## 7 занятие
-
-Приложение - blynk
-
+Приложение - **blynk**
 > Точка доступа: LigaRobotov
 
 > Пароль: LRobot2017
 
-временная почта - temp-mail.org/ru/
-  >For example
-  
-  >login: bipilelaxe@emailsy.info
-  
-  >password: bipilelaxe@emailsy.info
+[**временная почта**](temp-mail.org/ru/)
+> For example
+> login: bipilelaxe@emailsy.info
+> password: bipilelaxe@emailsy.info
   
