@@ -36,8 +36,11 @@
 
 > Пароль: LRobot2017
 
-[**временная почта**](temp-mail.org/ru/)
+[**временная почта**](https://temp-mail.org/ru/)
 > For example
 > login: bipilelaxe@emailsy.info
 > password: bipilelaxe@emailsy.info
   
+## 8 занятие
+
+[Работа с UDP](https://github.com/prestidigitateur/lr14/blob/master/standart/udpSendGet/udpSendGet.ino)
