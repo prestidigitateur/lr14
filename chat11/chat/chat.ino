@@ -32,7 +32,7 @@ void handleRoot(){
   }
   Serial.println("---");
 
-  String error;
+  String info;
   if(ip.length()>0 && msg.length()>0){
     WiFiClient client;
     if(client.connect(addr, port)){
@@ -40,38 +40,35 @@ void handleRoot(){
       client.print(msg);
       client.write('\r');
       delay(1);
-      client.flush();
       client.stop();
   
-      error = "Send " + ip + " "+ msg;
-      Serial.println(error);
+      info = "Send " + ip + " "+ msg;
+      Serial.println(info);
       msg = "";
     }
     else{
-      error = "Connection failed " + ip;
-      Serial.println(error);
+      info = "Connection failed " + ip;
+      Serial.println(info);
     }
   }
   
-  String myHtml = "<!DOCTYPE html> <html> <head> <title>Чатик 😜</title>";
-  myHtml += "<meta charset=\"utf-8\"> </head> <body style=\"zoom: 300%;\" >"+error+"<hr>";
-  myHtml += "<form method=\"post\" action=\"/chatik\"> <p>";
-  myHtml += "Введите IP: <input type=\"text\" name=\"ip\" style=\"width: 100%\" value=\""+ip+"\"></input>";
-  myHtml += "Введите cообщение: ";
-  myHtml += "<textarea type=\"text\" name=\"msgToSend\" style=\"width: 100%\">"+msg+"</textarea>";
-  myHtml += "</p> <button type=\"submit\">Отправить сообщение</button> </form><hr>"+messages+"<hr>";
-  myHtml += "<a href=\"/chatik\"><button>Обновить историю сообщений</button></a></body> </html>";
+  String myHtml = "<!DOCTYPE html><html><head>";
+   myHtml += "<title>Чатик 😜</title><meta charset=\"utf-8\"></head>";
+   myHtml += "<body style=\"zoom: 300%;\" >"+info+"<br><br><hr>"+messages+"<hr>";
+   myHtml += "<a href=\"/chat\"><button>Обновить историю сообщений</button></a>";
+   myHtml += "<br><br><form method=\"post\" action=\"/chat\">";
+   myHtml += "Введите IP:<input type=\"text\" name=\"ip\" style=\"width: 100%\" value=\""+ip+"\"></input>";
+   myHtml += "Введите cообщение:<textarea type=\"text\" name=\"msgToSend\" style=\"width: 100%\">"+msg+"</textarea>";
+   myHtml += "<button type=\"submit\">Отправить сообщение</button>";
+   myHtml += "</form></body></html>";
   webServer.send(200, "text/html", myHtml);
 }
 
 void setup(void){
-
   Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   Serial.println("");
 
-  // Wait for connection
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -82,10 +79,9 @@ void setup(void){
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 
-
-  webServer.on("/chatik", handleRoot);
+  webServer.on("/chat", handleRoot);
   webServer.onNotFound( [](){
-    webServer.send(200, "text/html", "<a style=\"zoom: 300%;\" href=\"/chatik\">Go to chat.</a>");
+    webServer.send(200, "text/html", "<a style=\"zoom: 300%;\" href=\"/chat\">Go to chat.</a>");
   });
   webServer.begin();
   server.begin();
@@ -93,8 +89,7 @@ void setup(void){
 }
 
 void loop(void){
-  webServer.handleClient();
-	WiFiClient client = server.available();
+  WiFiClient client = server.available();
  
   if(client){
   Serial.println("new client");
@@ -106,7 +101,7 @@ void loop(void){
   Serial.println(req);
   messages += req + "<br>";
   delay(1);
-  client.flush();
   client.stop();
-   }
+ }
+  webServer.handleClient();
 }
