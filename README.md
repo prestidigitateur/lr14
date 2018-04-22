@@ -32,9 +32,6 @@
 
 ## 7 занятие
 Приложение - **blynk**
-> Точка доступа: LigaRobotov
-
-> Пароль: LRobot2017
 
 [**временная почта**](https://temp-mail.org/ru/)
 > For example
@@ -44,3 +41,7 @@
 ## 8 занятие
 
 [Работа с UDP](https://github.com/prestidigitateur/lr14/blob/master/standart/udpSendGet/udpSendGet.ino)
+
+## 10 занятие
+
+[Работа с TCP](https://github.com/prestidigitateur/lr14/blob/master/standart/tcpSendGet/tcpSendGet.ino)
