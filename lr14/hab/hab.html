@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Умный дом</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			html{width: 100vw;}
+			#tab-1, #tab-2, #tab-3, #tab-4 {display: none;}
+			#container input + label{padding: 0.2em; border-radius: 0.5em; background: #fff0f5;}
+			#container input:checked + label {
+				background: #ffbdd3;
+				color: #444;
+				position: relative;
+				z-index: 6;
+			}
+
+			#content {
+				background: #fff0f5;
+				border-radius: 0.5em;
+				min-height: 20em; 
+				position: relative;
+				top: 1em;
+				width: 100%;
+				z-index: 5;
+			}
+
+			#content div {
+				opacity: 0;
+				padding: 10px;
+				position: absolute;
+				z-index: -100;
+			}
+
+			#container input#tab-1:checked ~ #content #content-1,
+			#container input#tab-2:checked ~ #content #content-2,
+			#container input#tab-3:checked ~ #content #content-3,
+			#container input#tab-4:checked ~ #content #content-4 {
+			    opacity: 1;
+			    z-index: 100;
+			}
+		</style>
+	</head>
+	<body style="zoom: 300%; padding: 10px">
+
+
+	<div id="container">
+	    <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+	    <label for="tab-1">Шторы</label>
+	    <input id="tab-2" type="radio" name="tab-group" />
+	    <label for="tab-2">Освещение</label>
+	    <input id="tab-3" type="radio" name="tab-group" />
+	    <label for="tab-3">Охрана</label>
+	    <input id="tab-4" type="radio" name="tab-group" />
+	    <label for="tab-4">Внешние</label>
+
+	    <div id="content">
+	        <div id="content-1">
+				<form action="hab" method="post">
+				<h1>Управление шторами</h1>		
+				<p>
+					<label>Текущее положение</label><br>
+					<progress value="4" max="10" />
+				</p>
+				<p>
+					<label>Выставить положение в</label><br>
+					<input name="range" type="range" max="10" value="5" />
+				</p>
+				<hr>
+					<button type="submit">Выставить</button>
+					<a href="hab"><button type="button">Обновить</button></a>
+				</form>
+	        </div>
+	        <div id="content-2">
+	         	<form action="hab" method="post">
+				<h1>Управление освещением</h1>		
+				<p>
+					<label>Текущее освещение 1 лампы</label><br>
+					<input name="lamp1" type="color" value="#ff0000"/>
+				</p>
+				<p>
+					<label>Текущее освещение 2 лампы</label><br>
+					<input name="lamp2" type="color" value="#0000ff"/>
+				</p>
+				<hr>
+					<button type="submit">Выставить</button>
+					<a href="hab"><button type="button">Обновить</button></a>
+				</form>
+	        </div>
+	        <div id="content-3">
+				<h1>Охранная система</h1>		
+				<p>
+					<h3>Присутствие 1 комната</h3>
+					<text>В комнате никого</text>			
+				</p>
+				<p>
+					<h3>Присутствие 2 комната</h3>
+					<text>В комнате кто-то есть</text>
+				</p>
+				<hr>
+					<div>
+					12:12:12 2 комната ЕСТЬ
+					</div>
+				<hr>
+				<a href="hab"><button>Обновить</button></a>
+	        </div>
+	        <div id="content-4">
+			    <h1>Внешние датчики</h1>		
+				<h4>Температура: 12</h4>		
+				<h4>Влажность: 12</h4>
+				<h4>Освещённость: 12</h4>
+				<hr>
+				<a href="hab"><button>Обновить</button></a>
+	        </div>
+	    </div>
+	</div>
+	</body>
+</html>

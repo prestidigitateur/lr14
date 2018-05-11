@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Шторы</title>
+		<meta charset="utf-8">
+	</head>
+	<body style="zoom: 300%; padding: 10px">
+		<form action="curtains" method="post">
+		<h1>Шторы</h1>		
+		<p>
+			<label>Текущее положение</label><br>
+			<progress value="4" max="10" />
+		</p>
+		<p>
+			<label>Выставить положение в</label><br>
+			<input name="range" type="range" max="10" value="5" />
+		</p>
+		<hr>
+			<button type="submit">Выставить</button>
+			<a href="curtains"><button type="button">Обновить</button></a>
+		</form>
+	</body>
+</html>
